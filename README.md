@@ -22,9 +22,6 @@
 <hr/>
 
 ### Python
-나도코딩 python 강의 영상
-<iframe id="ytplayer" type="text/html" width="640"
-height="360“ src="https://www.youtube.com/watch?v=kWiCuklohdY" frameborder="0"></iframe>
 
 ```python
 print("hello world!!")
