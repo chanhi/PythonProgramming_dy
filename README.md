@@ -38,6 +38,16 @@
 
 ### Python
 
+#### 자료형
 ```python
-print("hello world!!")
+"문자열" #string
+23 #int
+3.14 #float
+True # Boolean
+[1, 2, "num"] #array
+(1, 2, "num") #tuple
+{"key": "value", "key": ["value", "arr"]} #dictionary
 ```
+
+#### 연산식
++, -, *, /, %(나머지), //, **
