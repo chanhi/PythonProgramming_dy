@@ -24,7 +24,17 @@ radius = int(rad)
 length = 2*3.14*radius
 print(planet, 'radius:', radius)
 print(planet, '둘레:', length)
-'''
 myStr = "Monty Python"
 print(len(myStr), myStr[:5], myStr[6:], myStr[6:12])
 print(myStr[-6:0])
+'''
+value = input("xxx.xx:")
+num = value.replace('.', '')
+sum = 0
+sum += int(num[0])
+sum += int(num[1])
+sum += int(num[2])
+sum += int(num[3])
+sum += int(num[4])
+print('입력값:', value)
+print('모든 자릿수 합:', sum)
