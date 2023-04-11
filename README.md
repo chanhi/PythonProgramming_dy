@@ -49,6 +49,82 @@ True # Boolean
 {"key": "value", "key": ["value", "arr"]} #dictionary
 ```
 
+#### 리스트(list)
+- 대괄호[]로 리스트를 구성
+- 값은 정수, 실수, 문자열, 리스트 등 모두 가능
+```python
+array1 = [1, '2', 'string', [1,2,3]]
+array2 = [] #빈 리스트 생성
+array3 = list() #빈 리스트 생성
+array2.append('add') #리스트의 가장 뒤에 항목 추가
+array2.insert(0, 'insert') #첫 인자의 인덱스 위치에 두번째 인자를 삽입 [(0)add(1)]
+array1[len(array1) - 1] = 2 #인덱싱, 해당하는 값이 없으면 IndexError: list index out of range
+array1[0:2] #슬라이싱, 해당하는 값이 없으면 빈 리스트 반환
+print(array1[3][0]) #1 반환
+array1.remove('2') #해당 값을 삭제, 없으면 ValueError 발생
+popValue = array1.pop(0) # 인자값에 해당하는 index에 위치한 값을 제거하며 반환, 없으면 IndexError
+```
+- 여러 리스트 메소드
+    - ```count()``` : 값을 가지는 항목의 수
+    - ```index()``` : 해당 값이 위치한 첫번째 인덱스 반환 
+    - ```reverse()``` : 순서를 뒤집음
+    - ```sort()``` : 리스트 순서 정렬(default 오름차순, reverse=True=>내림차순 정렬)
+- ```sorted(list)```: 리스트를 정렬한 리스트를 반환하는 함수(reverse=True=>내림차순)
+- 리스트를 슬라이싱된 부분에 대입하면 배열이 아닌 값이 대입된다.
+```python
+array1 = [1,2,3,4,5,6]
+array2 = [7,8,9]
+array1[2:3] = array2[:1] # [1,2,7,8,5,6]
+del array1[0:2] #해당 부분 삭제, 인덱스 전달은 필수, 없으면 에러발생
+array1.clear() #빈 리스트로 만듦
+array1 = ['월', '화', '수']
+array2 = ['목', '금', '토', '일']
+print(array1 + array2) # 두 리스트가 연결되 출력
+array1.extend(array2) # array2가 array1에 연결됨
+```
+- 리스트에 * 연산자를 사용하면 그만큼 반복된 값이 추가
+```python
+arr=[1,2] 
+arr*3 # [1,2,1,2,1,2])
+```
+- 조건을 만족하는 항목으로 리스트를 간결히 생성하는 컴프리헨션
+```python
+even = [i for i in range(2, 11, 2)] # 2~10까지의 짝수 배열
+arr = [i**2 for i in range(10) if i%2 == 1] # 10 이하의 홀수의 제곱
+```
+- 리스트 대입에 의한 동일 리스트 공유
+    - 얕은 복사(대입하는 변수가 동일한 시퀀스를 가리킴)
+    - arr1 = arr2 라고 하면 arr1이 arr2를 지칭하게 됨. 
+- 리스트 대입으로 새로운 리스트 생성
+    - 깊은 복사(새로운 리스트를 만들어 복사)
+    - ```copy(arr)``` 메소드 이용
+    - ```arr1 = arr2[:]``` 슬라이싱 이용
+    - ```list(arr)``` 함수 이용
+- 피연산자인 변수 2개가 동일한 메모리를 공유하는지 검사하는 ```is``` (같으면 True, 다르면 False)
+```python
+f1 = [1,2,3,4]
+f2 = f1 #얕은복사
+print(f1 is f2) #True
+f3 = list(f1) #깊은복사
+print(f1 is f3) #False
+```
+
+#### 튜플(tuple)
+- 괄호()로 튜플 구성
+- 값은 리스트와 똑같이 뭐든 상관 없음
+- immutable(수정불가능한) 속성을 가지고 있음(append, insert, 값 변경 등 불가)
+- 값이 변경되는 메소드나 함수 이외에는 리스트와 같은 것을 가짐
+- 항목이 하나인 튜플을 표현할 때는 마지막에 콤마를 반드시 붙임 ```tu = 1,```
+```python
+tup1 = (1,2,3)
+tup2 = tup1 * 2 #(1,2,3,1,2,3)
+tup1 += tup2 #(1,2,3,1,2,3,1,2,3)
+del tup1 # tuple 삭제
+```
+
+#### 딕션어리(dict)
+-
+
 #### 연산식
 - 연산자
 +, -, *, /, %(나머지), //, **
@@ -218,4 +294,6 @@ while(a != 7):
 ```python
 from random import randint
 randint(1,5) #1~5사이의 임의의 정수 반환
+array = [1,2,3,4,5]
+choice(array) #array 임의의 수 반환
 ```
