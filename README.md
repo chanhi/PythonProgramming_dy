@@ -120,10 +120,78 @@ tup1 = (1,2,3)
 tup2 = tup1 * 2 #(1,2,3,1,2,3)
 tup1 += tup2 #(1,2,3,1,2,3,1,2,3)
 del tup1 # tuple 삭제
+tup3 = 1,2,3, #(1,2,3)
 ```
 
 #### 딕션어리(dict)
--
+- key:value 형태의 항목을 나열 ```<class 'dict'>```
+- ```dict()``` 빈 딕셔너리 생성
+```python
+dict1 = {
+    key1:value1,
+    key2:value2
+}
+dict1[key3] = value3 #key3:value3 항목 추가
+dic2 = dict([['월', 'Monday'],['화', 'Tuesday'],['수', 'Wednesday']])
+dic2 = dict((['월', 'Monday'],['화', 'Tuesday'],['수', 'Wednesday']))
+dic2 = dict([('월', 'Monday'),('화', 'Tuesday'),('수', 'Wednesday')])
+dic2 = dict((('월', 'Monday'),('화', 'Tuesday'),('수', 'Wednesday')))
+```
+- 딕션어리 메소드
+    - keys(): 키로만 구성된 리스트 반환
+    - items(): (키, 값) 쌍의 튜플이 들어 있는 리스트 반환
+    - values(): 값으로만 구성된 리스트 반환
+    ```python
+    day=dict(월='monday', 화='tuesday', 수='wednesday', 목='thursday')
+    for key in day.keys():
+        print(f'{key}:{day[key]}') #월:monday ...
+    for key in day:
+        print(f'{key}:{day[key]}') #월:monday ...
+    for key, value in day.items():
+        print(f'{key}: {value}') #월:monday ...
+    print(day.values()) #monday, tuesday, ...
+    ```
+    - get(key, 해당 키가 없을 때 반환값): 키로 조회
+    - clear(): 기존의 모든 키와 값을 삭제 -> 빈 딕셔너리
+    - del dict_name: 딕셔너리 변수 제거
+    ```python
+    city = {'대한민국':'서울', '미국':'워싱턴DC', '일본':'도쿄'}
+    city.get('대한민국', '없네요') # '서울', 만약 없어으면 '없네요' 출력
+    city.clear() # {}
+    del city # 변수제거
+    ```
+    - pop(키): 해당 키의 값을 반환하고 삭제
+    - popitem(): 마지막으로 삽입된 키의 (키, 값) 튜플을 반환하고 삭제
+    - update(dict_name): 다른 딕셔너리와 병합(만약 같은 키값이 있다면 값만 변환)
+    ```python
+    city = {'대한민국':'서울', '미국':'워싱턴DC', '일본':'도쿄'}
+    city.pop('일본') #'도쿄' 반환
+    city.popitem() # ('미국', '워싱턴DC') 반환
+    city2 = {'독일':'베를린'}
+    city.update(city2) #city = {'대한민국':'서울', '독일':'베를린'}
+    city.update({'대한민국':'부산'}) #city = {'대한민국':'부산', '독일':'베를린'}
+    ```
+
+#### list, tuple, dict 타입 변환
+- list <-> tuple ```list()```와 ```tuple()```을 이용해서 변경
+- zip(list1, list2): zip 클래스의 형태로 각 원소의 같은 인덱스의 값을 묶어 반환하는 함수
+```python
+l1 = [1,2]
+l2 = [3,4]
+l3 = [5,6]
+l4 = zip(l1, l2, l3)
+print(type(l4)) #<class 'zip'>
+for i in list(l4):
+    print(i[0], i[1], i[2])
+#1 3 5
+#2 4 6
+title = ['한식', '양식', '중식', '분식']
+food = ['불고기', '파스타', '짜장면', '떡볶이']
+clist = list(zip('ABCD', title, food))
+cdict = dict(zip(title, food))
+print(clist)#[('A', '한식', '불고기'), ..., ('D', '분식', '떡볶이')]
+print(cdict)#{'한식': '불고기', '양식': '파스타', '중식': '짜장면', '분식': '떡볶이'}
+```
 
 #### 연산식
 - 연산자
