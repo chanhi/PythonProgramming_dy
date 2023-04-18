@@ -25,7 +25,6 @@ for key, value in dict1.items():
     print(f'{key}: {value}')
 city = {'대한민국':'서울', '미국':'워싱턴DC', '일본':'도쿄'}
 print(city.popitem())
-"""
 
 l1 = [1,2]
 l2 = [3,4]
@@ -44,3 +43,17 @@ clist = list(zip('ABCD', title, food))
 cdict = dict(zip(title, food))
 print(cdict)
 print(clist)
+"""
+
+lec = ["python", "java", "c", "spring", "AI"]
+lec_class = [101, 102, 103, 104, 105]
+lecdict = dict(zip(lec, lec_class))
+print(lecdict)
+
+while(True):
+    winput = input("class:")
+    if(winput == 'quit'):
+        break
+    for k, v in lecdict.items():
+        if(int(winput) == v):
+            print(f'{k}: {v}')

@@ -192,6 +192,21 @@ cdict = dict(zip(title, food))
 print(clist)#[('A', '한식', '불고기'), ..., ('D', '분식', '떡볶이')]
 print(cdict)#{'한식': '불고기', '양식': '파스타', '중식': '짜장면', '분식': '떡볶이'}
 ```
+- list를 dict으로 만들어서 원하는 key값의 value를 출력하는 예제
+```python
+lec = ["python", "java", "c", "spring", "AI"]
+lec_class = [101, 102, 103, 104, 105]
+lecdict = dict(zip(lec, lec_class))
+print(lecdict)
+
+while(True):
+    winput = input("class:")
+    if(winput == 'quit'):
+        break
+    for k, v in lecdict.items():
+        if(int(winput) == v):
+            print(f'{k}: {v}')
+```
 
 #### 연산식
 - 연산자
