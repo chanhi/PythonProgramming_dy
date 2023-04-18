@@ -51,9 +51,11 @@ lecdict = dict(zip(lec, lec_class))
 print(lecdict)
 
 while(True):
-    winput = input("class:")
+    winput = input("lec:")
     if(winput == 'quit'):
         break
     for k, v in lecdict.items():
-        if(int(winput) == v):
+        if(winput == k):
             print(f'{k}: {v}')
+        else:
+            print("you input unable value. write again")
