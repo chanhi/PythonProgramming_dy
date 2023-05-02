@@ -334,13 +334,82 @@ res = int(a) + 3
 
 
 #### 함수
-- 내장함수
-len(), eval(), int(), max() ...
-- 사용자 정의 함수
+##### 내장함수
+- len(), eval(), int(), max() ...
+- map(function, iterable)
+    - iterable의 항목들을 순서대로 functiond르 적용한 뒤 결과를 반환
+    ```python
+    def add (x, y):
+        return x + y
+    lst = list(map(add, [10, 30, 50, 20], [1, 3, 5, 2]))
+    print(lst) # [11, 33, 55, 22]
+    lst = list(map(lambda x, y: x + y, [10, 30, 50, 20], [1, 3, 5, 2]))
+    print(lst) # [11, 33, 55, 22]
+    ```
+
+
+##### 사용자 정의 함수
 ```python
-def fun_name(arg_name):
+def fun_name(arg_name="default"): #인자 default값
     print("this is function")
-    return
+    return arg_name + "return"
+
+def subfunc(a, b): #위치인자
+    return a - b
+
+fun_name("arg") #함수의 호출은 함수 정의 이후에만 가능
+subfunc(b=2, a=5) #키워드 인자 사용
+```
+- 전역변수, 지역변수
+```python
+i=20
+a=2
+def addOne():
+    i=10
+    global a # 글로벌 변수로 지정
+    i += 1
+    print(i)
+def addTwo():
+    print(i+2)
+print(i) #20 전역변수
+addOne() #11 지역변수
+addTwo() #22 대입이 없는 경우 전역변수 참조
+```
+- 함수에서 값을 대입하지 않고 지역변수를 참조하면 오류
+```python
+i=20
+def addone():
+    print(i + 1)
+    i += 1 #수정이 있으므로 지역변수로 인지, 참조할 i가 없으므로 오류
+```
+- 가변인자 *args
+    - *은 리스트나 튜플을 unpacking해 가변 인자 형태로 변환
+    - 예) print(1,3,5)
+- 사전 형식의 키워드 가변인자 **kwargs
+    - 키워드 형태 가변인자 전달 (key:value형태 등)
+```python
+def sumvalue(*values **kwargs):
+    hap = 0
+    for v in values:
+        hap += v
+    for key in kwargs:
+        hap += kwargs[key]
+    return hap
+
+coffeeprice = {'value': 2000, '에스프레소': 2000, '아메리카노':2800, '카페라떼': 3200}
+print(sumvalue(1,2,3, **coffeeprice)) # 10006
+print(sumvalue(*[2,3,4], **coffeeprice)) # 10009
+```
+- 람다 함수(lambda function)
+    - 작고 이름이 없는 함수
+    - 키워드 lambda 이후에 콤마로 구분된 인자 목록
+    - 람다 함수는 여러 개의 인자를 취할 수 있지만 표현식은 하나만 가능
+    - return 없이 하나의 표현식 결과값 반환
+```python
+print((lambda x: x ** 3)(3)) # 27
+print((lambda a, b: a%b)(10, 3)) # 1
+div = lambda a, b: a/b
+print(div(10, 2)) # 5.0
 ```
 
 
