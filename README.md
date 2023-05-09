@@ -445,9 +445,83 @@ while(a != 7):
 
 
 #### 모듈 import
+- module: 함수나 클래스 정의 등의 파이썬 코드가 저장된 소스파일
+- third party modules: 여러 회사나 전문가가 개발해 배포하는 모듈
+- 표준 module: 파이썬에 기본적으로 설치되는 모듈(random, math, datetime, sys, os -> sys.builtin_module_names에 모든 이름이 있음) 
+- 사용자 지정 모듈: python 소스파일에 원하는 함수와 클래스 정의 후 import
+- 패키지: 모듈을 모아둔 폴더
 ```python
-from random import randint
+import math
+print(math.gcd(12, 16)) #4 최대공약수
+print(math.trunc(3.141592)) #3 내림
+print(math.fsum([1.2, 2.5])) #3.7 실수합
+print(math.sqrt(4)) #2.0 제곱근
+print(math.e) #자연수 e
+print(math.pi) #원주율 pi
+print(math.degrees(math.pi), math.radians(90)) #180.0, pi/2
+print(math.floor(3.8), math.ceil(3.1)) #3, 4 내림, 올림
+```
+
+```python
+from random import randint, choice, shuffle, sample #원하는 함수만 import하기 위해서 from 사용 *import random 하면 전부 import
 randint(1,5) #1~5사이의 임의의 정수 반환
 array = [1,2,3,4,5]
 choice(array) #array 임의의 수 반환
+shuffle(array) #array 순서 랜덤 변경
+print(sample(array, 2)) #랜덤한 값 두개 출력
+```
+##### numpy, matplotlib
+- numpy
+    - ndarray: numpy의 기본 자료형(속도 빠름)
+    - ndarray의 연산은 각 데이터가 서로 연산된다.
+```python
+import numpy as np
+arrA = np.array([1,2,3,4,5])
+arrB = np.array([5,4,3,2,1])
+print(arrA + arrB) #[6 6 6 6 6]
+arrA.shape #(5,)
+arrC = np.array([[1,2],[3,4],[5,6]])
+arrC.shape #(3,2)
+```
+
+- matplotlib
+    - 데이터를 시각화하는 라이브러리
+    - 라인 플롯, 바 차트, 파이 차트, 히스토그램, 박스 플롯, 스태커 플롯 등
+    - 10주차 [data_visualiztion.py](week10/data_analysis/data_visualization.py) 여러가지 시각화
+    - folium 라이브러리를 통해 지도에 시각화 가능
+```python
+from matplotlib import pyplot as plt
+import numpy as np
+
+t = np.arange(0.0, 2.0, 0.01)
+s = 1 + np.sin(2 * np.pi * t)
+
+fig, ax = plt.subplots()
+ax.plot(t, s)
+
+ax.set(xlabel='time (s)', ylabel='voltage (mV)',
+       title='About as simple as it gets, folks')
+ax.grid()
+
+plt.show()
+```
+
+
+#### 내장변수
+##### __name__
+- 모듈 자체에서 시작되어 실행되면 __main__이 저장됨
+- 다른 곳에서 호출되면 자신의 모듈 이름이 저장됨
+```python
+#helloWorld.py
+def hello_world():
+    print("hellow world")
+
+if __name__ == '__main__' # 소스파일 자체를 실행하면 true, 소스파일을 모듈로 이용해 import 하면 false
+    print("이 실행 결과는 이 파일을 실행했을 때 출력됩니다.")
+    print("만약 import되어 이 소스파일이 이용될 땐 출력되지 않습니다.")
+```
+```python
+#main.py
+from helloWorld improt hello_world
+hello_world() #hellow world
 ```
