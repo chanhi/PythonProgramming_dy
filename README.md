@@ -506,6 +506,20 @@ ax.grid()
 plt.show()
 ```
 
+#### BeautifulSoup
+- ```from bs4 import BeautifulSoup as bs```
+- 웹의 정보를 크롤링 하기 위한 라이브러리
+- requests: 웹에 정보를 요청하고 받기 위한 라이브러리
+```python
+from bs4 import BeautifulSoup as bs
+import requests
+
+url = "https://naver.com"
+result = requests.get(url)
+soup = bs(result.text, "html.parser")
+print(soup)
+```
+
 
 #### 내장변수
 ##### __name__
