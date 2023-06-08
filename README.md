@@ -332,6 +332,52 @@ res = int(a) + 3
 - 기본적으로 str 타입으로 받는다
 - 자료변환 함수(str(), int(), float())를 이용해 원하는 타입으로 변경
 
+#### 집합
+- 중복되는 요소가 없으며 순서도 없는 원소의 모임
+- 원소는 불변의 값이고 중복될 수 없으며 유일하다. 순서는 의미가 없다.
+- {1, 4, 6, 7}, {(1,1), (2,5), (3, 4)}
+```python
+odd = {1,3,5}
+odd.add(7) #{1, 3, 5, 7}
+odd.remove(3) #{1, 5, 7} -> 해당 key가 없으면 오류 발생
+odd.discard(3) #{1, 5, 7} -> 해당 key가 없으면 아무것도 실행 안함
+odd.pop() # 맨 앞 원소 1반환
+odd.clear() # 빈 집합으로 만듦
+```
+- 합집합
+```python
+a = {3, 6, 9, 12}
+b = {4, 6, 8, 10, 12}
+a | b # {3,4,6,8,9,10,12}
+a.union(b) #{3,4,6,8,9,10,12} 리턴(a, b 변경 x)
+a.update(b) #{3,4,6,8,9,10,12}로 a를 업데이트
+```
+- 교집합
+```python
+a = {3, 6, 9, 12}
+b = {4, 6, 8, 10, 12}
+a & b # {12, 6}
+a.intersection(b) #{12, 6} 리턴(a, b 변경 x)
+a.intersection_update(b) #{12, 6}로 a를 업데이트
+```
+- 차집합, 여집합
+```python
+a = {3, 6, 9, 12}
+b = {4, 6, 8, 10, 12}
+#차집합
+a - b # {8, 10, 4}
+a.difference(b) #{8, 10, 4} 리턴(a, b 변경 x)
+#여집합
+a ^ b #{3, 4, 8, 9, 10}
+a.symmetric_difference(b) #{3, 4, 8, 9, 10}
+```
+-집합 연산의 축약 대입 연산자
+```python
+a |= b # = a.update(b)
+a &= b # = a.intersection_update(b)
+a -= b # = a.difference_update(b)
+a ^= n # = a.symmetric_difference_update(b)
+```
 
 #### 함수
 ##### 내장함수
