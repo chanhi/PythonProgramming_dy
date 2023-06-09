@@ -392,7 +392,12 @@ a ^= n # = a.symmetric_difference_update(b)
     lst = list(map(lambda x, y: x + y, [10, 30, 50, 20], [1, 3, 5, 2]))
     print(lst) # [11, 33, 55, 22]
     ```
-
+- enumerate(): 0부터 시작하는 첨자와 항목 값의 튜플 리스트를 생성
+    ```python
+    lst = [10, 20, 30]
+    list(enumerate(lst. start=1)) #[(1, 10), (2, 20), (3, 30)]
+    #start인자: 시작 값을 지정(없으면 default 0)
+    ```
 
 ##### 사용자 정의 함수
 ```python
@@ -401,12 +406,12 @@ def fun_name(arg_name="default"): #인자 default값
     return arg_name + "return"
 
 def subfunc(a, b): #위치인자
-    return a - b
+    return a - b, b - a #여러개의 값 리턴 가능
 
 fun_name("arg") #함수의 호출은 함수 정의 이후에만 가능
-subfunc(b=2, a=5) #키워드 인자 사용
+subfunc(b=2, a=5) #키워드 인자 사용, 키워드 인자는 모든 위치 인자 이후에 
 ```
-- 전역변수, 지역변수
+##### 전역변수, 지역변수, lambda함수
 ```python
 i=20
 a=2
@@ -419,7 +424,7 @@ def addTwo():
     print(i+2)
 print(i) #20 전역변수
 addOne() #11 지역변수
-addTwo() #22 대입이 없는 경우 전역변수 참조
+addTwo() #22 대입이 없이 참조만 하는 경우 전역변수 참조
 ```
 - 함수에서 값을 대입하지 않고 지역변수를 참조하면 오류
 ```python
@@ -443,8 +448,8 @@ def sumvalue(*values **kwargs):
     return hap
 
 coffeeprice = {'value': 2000, '에스프레소': 2000, '아메리카노':2800, '카페라떼': 3200}
-print(sumvalue(1,2,3, **coffeeprice)) # 10006
-print(sumvalue(*[2,3,4], **coffeeprice)) # 10009
+print(sumvalue(1,2,3, **coffeeprice)) # 10006 / 3까지 가변인자(약간 print(1,2,3) 생각하면 쉬움
+print(sumvalue(*[2,3,4], **coffeeprice)) # 10009 / 가변인자로 배열 삽입
 ```
 - 람다 함수(lambda function)
     - 작고 이름이 없는 함수
@@ -457,7 +462,6 @@ print((lambda a, b: a%b)(10, 3)) # 1
 div = lambda a, b: a/b
 print(div(10, 2)) # 5.0
 ```
-
 
 #### 조건문
 ```python
