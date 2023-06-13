@@ -382,6 +382,15 @@ a ^= n # = a.symmetric_difference_update(b)
 #### 함수
 ##### 내장함수
 - len(), eval(), int(), max() ...
+- zip()
+    - __동일한 수로 이루어진__ 여러 개의 튜플 항목 시퀀스를 각각의 리스트로 묶어주는 함수
+    - return type : zip
+    - 리스트나 튜플로 타입 변환하여 사용
+    ```python
+    a = ['A', 'B', 'C', 'D']
+    b = (1, 2, 3, 4)
+    dict(zip(b, a)) #{1:'A', 2:'B', 3:'C', 4:'D'}
+    ```
 - map(function, iterable)
     - iterable의 항목들을 순서대로 functiond르 적용한 뒤 결과를 반환
     ```python
@@ -555,7 +564,22 @@ ax.grid()
 
 plt.show()
 ```
+##### 사용자 정의 모듈
+- 서드파티 모듈 저장 경로 ```sys.path```에 사용자 정의 모듈 저장
+- 혹은 사용자 정의 모듈 경로를 sys.path에 추가 ```sys.path.append()```
+_hello.py_
+```python
+def hi():
+    print("hello world")
+msg = "hi"
+```
 
+_index.py_
+```python
+from hello import hi(), msg #import hello
+hi() #hello.hi()
+msg #hello.msg
+```
 #### BeautifulSoup
 - ```from bs4 import BeautifulSoup as bs```
 - 웹의 정보를 크롤링 하기 위한 라이브러리
@@ -582,10 +606,19 @@ def hello_world():
 
 if __name__ == '__main__' # 소스파일 자체를 실행하면 true, 소스파일을 모듈로 이용해 import 하면 false
     print("이 실행 결과는 이 파일을 실행했을 때 출력됩니다.")
-    print("만약 import되어 이 소스파일이 이용될 땐 출력되지 않습니다.")
+    print("만약 import되어 이 소스파일이 이용될 땐 출력되지 않습니다.") #__name__ = __helloWorld__
 ```
 ```python
 #main.py
 from helloWorld improt hello_world
 hello_world() #hellow world
+```
+
+#### 패키지
+- 여러 모듈이 저장된 폴더
+- package\md1.py, package\child_package1\md2.py, package\child_package2\md3.py->hi()
+```python
+import package.md1
+from package.child_package1 import md2
+from package.child_package2.md3 import hi
 ```
