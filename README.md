@@ -503,7 +503,7 @@ while(a != 7):
 ```python
 import math
 print(math.gcd(12, 16)) #4 최대공약수
-print(math.trunc(3.141592)) #3 내림
+print(math.trunc(3.141592)) #3 절댓값 내림
 print(math.fsum([1.2, 2.5])) #3.7 실수합
 print(math.sqrt(4)) #2.0 제곱근
 print(math.e) #자연수 e
